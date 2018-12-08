@@ -1,8 +1,11 @@
 
 /*  
  *
- *  Primary file for API
+ * Primary file for API
  *  
+ * Run production mode in Windows: set NODE_ENV=production&& node index.js
+ * For IOS: NODE_ENV=production node index.js
+ * 
  */ 
 
 
@@ -10,9 +13,8 @@
 const http              = require('http');
 const url               = require('url');
 const StringDecoder     = require('string_decoder').StringDecoder;
+const config            = require('./config');
 
-// Configuration
-const port = 3000;
 
 
 // The server should respond to all requests with a string
@@ -69,6 +71,7 @@ const server = http.createServer(function(req, res){
             const payloadString = JSON.stringify(payload);
 
             // Send the response
+            res.setHeader('content-type', 'application/json');
             res.writeHead(statusCode);
             res.end(payloadString);
 
@@ -77,9 +80,9 @@ const server = http.createServer(function(req, res){
     });
 });
 
-// Start the server, and have it listen on port 3000
-server.listen(port, function() {
-    console.log("The server is listing on port " + port);
+// Start the server
+server.listen(config.port, function() {
+    console.log("The server is listing on port", config.port, "in", config.envName, "mode");
 });
 
 // Define the handlers
