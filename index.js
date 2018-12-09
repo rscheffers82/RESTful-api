@@ -14,10 +14,11 @@ const http              = require('http');
 // const https             = require('https');
 const url               = require('url');
 const StringDecoder     = require('string_decoder').StringDecoder;
-const config            = require('./config');
+const config            = require('./lib/config');
 const fs                = require('fs');
 
-const router            = require('./router');
+const router            = require('./lib/router');
+const helpers           = require('./lib/helpers');
 
 // Instantiate the HTTP server
 const httpServer = http.createServer(function(req, res){
@@ -84,7 +85,7 @@ const unifiedServer = function(req,res) {
             queryStringObject,
             method,
             headers,
-            payload: buffer,
+            payload: helpers.parseJsonToObject(buffer),
         };
 
         // Route the request to the handler as specified in the router
