@@ -11,15 +11,40 @@
 
 // Dependencies
 const http              = require('http');
+// const https             = require('https');
 const url               = require('url');
 const StringDecoder     = require('string_decoder').StringDecoder;
 const config            = require('./config');
+const fs                = require('fs');
 
+const router            = require('./router');
 
+// Instantiate the HTTP server
+const httpServer = http.createServer(function(req, res){
+    unifiedServer(req,res);
+});
 
-// The server should respond to all requests with a string
-const server = http.createServer(function(req, res){
+// Start the server
+httpServer.listen(config.httpPort, function() {
+    console.log("The server is listing on port", config.httpPort, "in", config.envName, "mode");
+});
 
+// // Instantiate the HTTPS server
+// const httpsServerOptions = {
+//     'key': fs.readFileSync('./https/key.pem'),
+//     'cert': fs.readFileSync('./https/cert.pem'),
+// };
+// const httpsServer = https.createServer(httpsServerOptions, function(req, res){
+//     unifiedServer(req,res);
+// });
+
+// // Start the server
+// httpsServer.listen(config.httpsPort, function() {
+//     console.log("The server is listing on port", config.httpsPort, "in", config.envName, "mode");
+// });
+
+// Server logic for http and https
+const unifiedServer = function(req,res) {
     // Get the URL and parse it
     const parsedUrl = url.parse(req.url, true);     // Add true to include query URL details
 
@@ -52,7 +77,7 @@ const server = http.createServer(function(req, res){
 
         // Choose the handler this request should go to
         // route not available, route to notFound
-        const chosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : handlers.notFound;
+        const chosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : router.notFound;
         // Construct data object to send to the handler
         const data = {
             trimmedPath,
@@ -78,26 +103,4 @@ const server = http.createServer(function(req, res){
             console.log('Request response is:', statusCode, payloadString);
         });
     });
-});
-
-// Start the server
-server.listen(config.port, function() {
-    console.log("The server is listing on port", config.port, "in", config.envName, "mode");
-});
-
-// Define the handlers
-const handlers = {};
-
-handlers.sample = function(data, callback) {
-    callback(406, {'name': 'sample handler'})
-};
-
-
-// Not found handler
-handlers.notFound = function(data, callback) {
-    callback(404);
-};
-
-const router = {
-    'sample': handlers.sample,
 };
