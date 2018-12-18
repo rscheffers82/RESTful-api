@@ -1,2 +1,3 @@
 https/*.pem
-.data/*.*
+.data/tokens/*.*
+.data/users/*.*
