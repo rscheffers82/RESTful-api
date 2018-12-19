@@ -1,3 +1,4 @@
 https/*.pem
-.data/tokens/*.*
 .data/users/*.*
+.data/tokens/*.*
+.data/checks/*.*
