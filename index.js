@@ -8,16 +8,15 @@
  */ 
 
 const server =     require('./lib/server');
-// const workers =    require('./lib/workers');
+const workers =    require('./lib/workers');
 
 const app = {};
 
 app.init = function() {
     // start the server
     server.init();
-
     //start the workers
-    // workers.init();
+    workers.init();
 };
 
 // execute the app
