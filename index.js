@@ -7,8 +7,8 @@
  * 
  */ 
 
-const server =     require('./lib/server');
-const workers =    require('./lib/workers');
+const server    = require('./lib/server');
+const workers   = require('./lib/workers');
 
 const app = {};
 
