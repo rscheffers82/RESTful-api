@@ -7,10 +7,10 @@
 
         <!-- Meta tags -->
         <title>{head.title} | {global.appName}</title>
-        <meta name="description" content="{head.description">
+        <meta name="description" content="{head.description}">
 
         <!-- Static assets -->
-        <link type="image/x-icon" rel="icon" href="favicon.ico">
+        <link type="image/x-icon" rel="icon" href="public/favicon2.ico">
         <script type="text/javascript" charset="utf-8" src="public/app.js"></script>
         <link rel="stylesheet" type="text/css" href="public/app.css" />
     </head>
@@ -20,25 +20,27 @@
 
             <!-- Header -->
             <div class="header">
-                <a class="logo" href="/"></a>
+                <a class="logo" href="/">
+                    <img src="public/logo.png" alt="site logo" />
+                </a>
                 <ul class="menu">
                     <li>
                         <a href="/">Home</a>
                     </li>
                     <li>
-                        <a class="logged-out" href="/">Signup</a>
+                        <a class="logged-out" href="/account/create">Signup</a>
                     </li>
                     <li>
-                        <a class="logged-out" href="/">Login</a>
+                        <a class="logged-out" href="/session/create">Login</a>
                     </li>
                     <li>
-                        <a class="logged-in" href="/">Dashboard</a>
+                        <a class="logged-in" href="/checks/all">Dashboard</a>
                     </li>
                     <li>
-                        <a class="logged-in" href="/">Account Settings</a>
+                        <a class="logged-in" href="/account/edit">Account Settings</a>
                     </li>
                     <li>
-                        <a class="logged-in" href="/">Logout</a>
+                        <a class="logged-in" href="#">Logout</a>
                     </li>
                 </ul>
             </div>
