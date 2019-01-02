@@ -5,11 +5,15 @@ This server runs on NodeJS only without the use of any additional packages other
 Routes available:<br>
 | Route | Description |
 | --- | --- |
+|                       API                     |
+|`/api/users` | CRUD operations to manage users
+|`/api/tokens` | CRUD operations to manage tokens
+|`/api/checks` | CRUD operations to manage checks
+|                       UI                      |
+|`/` | Main index of the application
+|                       MISC                    |
 |`/ping` | Returns 200 status when server is up
-|`/hello` | Returns a welcome message. Can be provided with a name query param to get a personalised message. e.g. `/hello/?name=Jane Do`
-|`/users` | CRUD operations to manage users
-|`/tokens` | CRUD operations to manage tokens
-|`/checks` | CRUD operations to manage checks
+
 
 When no route is found a `404` status will be returned.
 
