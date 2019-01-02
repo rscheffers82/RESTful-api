@@ -3,16 +3,14 @@
 This server runs on NodeJS only without the use of any additional packages other than those provided by the Node framework.
 
 Routes available:<br>
-| Route | Description |
-| --- | --- |
-|                       API                     |
-|`/api/users` | CRUD operations to manage users
-|`/api/tokens` | CRUD operations to manage tokens
-|`/api/checks` | CRUD operations to manage checks
-|                       UI                      |
-|`/` | Main index of the application
-|                       MISC                    |
-|`/ping` | Returns 200 status when server is up
+
+|Route|Description
+|---|---
+|`/api/users`|CRUD operations to manage users|
+|`/api/tokens`|CRUD operations to manage tokens|
+|`/api/checks`|CRUD operations to manage checks|
+|`/`|Main index of the application|
+|`/ping`|Returns 200 status when server is up|
 
 
 When no route is found a `404` status will be returned.
